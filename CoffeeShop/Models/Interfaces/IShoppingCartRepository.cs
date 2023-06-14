@@ -1,12 +1,11 @@
-﻿namespace CoffeeShop.Models.Interfaces
+﻿namespace CoffeeShop.Models.Interfaces;
+
+public interface IShoppingCartRepository
 {
-    public interface IShoppingCartRepository
-    {
-        void AddToCart(Product product);
-        int RemoveFromCart(Product product);
-        List<ShoppingCartItem> GetShoppingCartItems();
-        void ClearCart();
-        decimal GetShoppingCartTotal();
-        public List<ShoppingCartItem>? ShoppingCartItems { get; set; }   
-    }
+    void AddToCart(Product product);
+    void ClearCart();
+    List<ShoppingCartItem> GetShoppingCartItems();
+    decimal GetShoppingCartTotal();
+    int RemoveFromCart(Product product);
+    public List<ShoppingCartItem>? ShoppingCartItems { get; set; }
 }
