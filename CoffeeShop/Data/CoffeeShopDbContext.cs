@@ -6,13 +6,24 @@ namespace CoffeeShop.Data;
 
 public class CoffeeShopDbContext : IdentityDbContext
 {
+    #region Constructors
+
     public CoffeeShopDbContext(DbContextOptions<CoffeeShopDbContext>options) : base(options)
     {   
     }
+
+    #endregion Constructors
+
+    #region DBSets
+
     public DbSet<Product> Products { get; set; }
     public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderDetail> OrderDetails { get; set; }
+
+    #endregion DBSets
+
+    #region Creation
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -82,4 +93,6 @@ public class CoffeeShopDbContext : IdentityDbContext
             }
         );
     }
+
+    #endregion Creation
 }
