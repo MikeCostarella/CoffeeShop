@@ -5,11 +5,22 @@ namespace CoffeeShop.Models.Services;
 
 public class ProductRepository : IProductRepository
 {
+    #region Member Variables
+
     private CoffeeShopDbContext dbContext;
+
+    #endregion Member Variables
+
+    #region  Constructors
+
     public ProductRepository(CoffeeShopDbContext dbContext)
     {
         this.dbContext = dbContext; 
     }
+
+    #endregion Constructors
+
+    #region Public Actions
 
     public IEnumerable<Product> GetAllProducts()
     {
@@ -25,4 +36,6 @@ public class ProductRepository : IProductRepository
     {
         return dbContext.Products.Where(p => p.IsTrendingProduct);
     }
+
+    #endregion Public Actions
 }

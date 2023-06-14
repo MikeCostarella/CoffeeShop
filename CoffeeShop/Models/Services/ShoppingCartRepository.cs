@@ -6,14 +6,29 @@ namespace CoffeeShop.Models.Services;
 
 public class ShoppingCartRepository : IShoppingCartRepository
 {
+    #region Member Variables
+
     private CoffeeShopDbContext dbContext;
+
+    #endregion Member Variables
+
+    #region  Constructors
+
     public ShoppingCartRepository(CoffeeShopDbContext dbContext)
     {
         this.dbContext = dbContext;
     }
+
+    #endregion Constructors
+
+    #region Public Properties
+
     public List<ShoppingCartItem>? ShoppingCartItems { get; set; }
     public string? ShoppingCartId { get; set; }
 
+    #endregion Public Properties
+
+    #region Public Actions
 
     public static ShoppingCartRepository GetCart(IServiceProvider services)
     {
@@ -27,7 +42,6 @@ public class ShoppingCartRepository : IShoppingCartRepository
 
         return new ShoppingCartRepository(context) { ShoppingCartId = cartId };
     }
-
 
     public void AddToCart(Product product)
     {
@@ -89,4 +103,6 @@ public class ShoppingCartRepository : IShoppingCartRepository
         dbContext.SaveChanges();
         return quantity;
     }
+
+    #endregion Public Actions
 }
